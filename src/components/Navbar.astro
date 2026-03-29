@@ -1,0 +1,149 @@
+---
+const navLinks = [
+  { label: 'About Me', href: '#about' },
+  { label: 'Services', href: '#services' },
+  { label: 'Projects', href: '#projects' },
+  { label: 'How I Work', href: '#process' },
+  { label: 'Skills', href: '#skills' },
+  { label: 'Contact', href: '#contact' },
+];
+---
+
+<nav
+  id="navbar"
+  class="fixed top-0 left-0 right-0 z-50 transition-all duration-300"
+>
+  <div class="max-w-6xl mx-auto px-6 py-4 flex items-center justify-between">
+    <!-- Logo -->
+    <a href="#" class="flex items-center gap-2.5 group">
+      <span class="text-xl font-black tracking-tight font-[family-name:var(--font-display)]">
+        <span class="gradient-text">EX</span><span class="text-accent-teal">.</span>
+      </span>
+      <span class="hidden sm:inline text-xs text-text-muted font-medium uppercase tracking-widest">Software Engineer</span>
+    </a>
+
+    <!-- Desktop Nav -->
+    <div class="hidden lg:flex items-center gap-1">
+      {navLinks.map((link) => (
+        <a
+          href={link.href}
+          class="px-4 py-2 rounded-full text-sm text-text-secondary hover:text-text-primary hover:bg-surface-light/50 transition-colors duration-200"
+        >
+          {link.label}
+        </a>
+      ))}
+      <a
+        href="#contact"
+        class="btn-accent ml-3 !py-2 !px-5 text-sm"
+      >
+        Let's Talk
+      </a>
+    </div>
+
+    <!-- Mobile hamburger -->
+    <button
+      id="menu-toggle"
+      class="lg:hidden flex flex-col gap-1.5 p-2 relative z-60"
+      aria-label="Toggle menu"
+      aria-expanded="false"
+    >
+      <span class="block w-6 h-0.5 bg-text-primary transition-all duration-300 origin-center" id="bar1"></span>
+      <span class="block w-6 h-0.5 bg-text-primary transition-all duration-300" id="bar2"></span>
+      <span class="block w-4 h-0.5 bg-text-primary transition-all duration-300 origin-center" id="bar3"></span>
+    </button>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div
+    id="mobile-menu"
+    class="lg:hidden fixed inset-0 bg-bg/95 backdrop-blur-xl flex flex-col items-center justify-center gap-6 opacity-0 pointer-events-none transition-opacity duration-300 z-50"
+  >
+    {navLinks.map((link) => (
+      <a
+        href={link.href}
+        class="mobile-nav-link text-2xl font-medium text-text-secondary hover:text-text-primary transition-colors"
+      >
+        {link.label}
+      </a>
+    ))}
+    <a href="#contact" class="btn-accent mt-4 text-lg">
+      Let's Talk
+    </a>
+  </div>
+</nav>
+
+<script>
+  const navbar = document.getElementById('navbar');
+  const toggle = document.getElementById('menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+  const bar1 = document.getElementById('bar1');
+  const bar2 = document.getElementById('bar2');
+  const bar3 = document.getElementById('bar3');
+  let isOpen = false;
+
+  // Scroll effect + scroll-spy
+  const navAnchors = document.querySelectorAll<HTMLAnchorElement>('#navbar a[href^="#"]');
+  const sections = Array.from(navAnchors)
+    .map(a => { const h = a.getAttribute('href'); return h && h.length > 1 ? document.querySelector(h) : null; })
+    .filter(Boolean) as HTMLElement[];
+
+  function updateActiveLink() {
+    // Navbar background
+    if (window.scrollY > 50) {
+      navbar?.classList.add('bg-bg', 'border-b', 'border-border/50');
+    } else {
+      navbar?.classList.remove('bg-bg', 'border-b', 'border-border/50');
+    }
+
+    // Scroll-spy: find current section
+    let current = '';
+    for (const section of sections) {
+      if (section.getBoundingClientRect().top <= 120) {
+        current = '#' + section.id;
+      }
+    }
+    navAnchors.forEach(link => {
+      if (link.getAttribute('href') === current) {
+        link.classList.add('!text-text-primary', 'bg-surface-light/50');
+      } else {
+        link.classList.remove('!text-text-primary', 'bg-surface-light/50');
+      }
+    });
+  }
+
+  window.addEventListener('scroll', updateActiveLink, { passive: true });
+
+  // Mobile toggle
+  toggle?.addEventListener('click', () => {
+    isOpen = !isOpen;
+    if (isOpen) {
+      menu?.classList.remove('opacity-0', 'pointer-events-none');
+      menu?.classList.add('opacity-100', 'pointer-events-auto');
+      bar1?.style.setProperty('transform', 'rotate(45deg) translate(3px, 3px)');
+      bar2?.style.setProperty('opacity', '0');
+      bar3?.style.setProperty('transform', 'rotate(-45deg) translate(2px, -2px)');
+      bar3?.style.setProperty('width', '1.5rem');
+      document.body.style.overflow = 'hidden';
+    } else {
+      closeMenu();
+    }
+  });
+
+  // Close on link click
+  menu?.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      isOpen = false;
+      closeMenu();
+    });
+  });
+
+  function closeMenu() {
+    menu?.classList.add('opacity-0', 'pointer-events-none');
+    menu?.classList.remove('opacity-100', 'pointer-events-auto');
+    bar1?.style.setProperty('transform', 'none');
+    bar2?.style.setProperty('opacity', '1');
+    bar3?.style.setProperty('transform', 'none');
+    bar3?.style.setProperty('width', '1rem');
+    document.body.style.overflow = '';
+  }
+</script>

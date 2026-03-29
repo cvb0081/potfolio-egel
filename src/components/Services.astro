@@ -1,0 +1,69 @@
+---
+const services = [
+  {
+    icon: 'layers',
+    title: 'SaaS & Product Development',
+    description: 'Multi-tenant SaaS platforms and digital products built from the ground up, from architecture to launch. Whether you\'re validating an MVP or scaling to hundreds of clients, the result is a production-ready system designed to grow with your business.',
+    tags: ['Multi-tenant Architecture', 'Database Isolation', 'Subscription Models', 'Clean Architecture', 'CQRS'],
+  },
+  {
+    icon: 'api',
+    title: 'Backend Architecture & APIs',
+    description: 'The backend engine behind your application: scalable APIs, data pipelines, third-party integrations, and secure authentication systems. Built with maintainability and performance in mind, so your system stays reliable as it grows.',
+    tags: ['REST APIs', 'Clean Architecture', 'Domain-Driven Design', 'Event-Driven', 'OAuth2/SSO'],
+  },
+  {
+    icon: 'refresh',
+    title: 'Legacy Modernization & Migration',
+    description: 'Outdated systems transformed into modern, maintainable platforms, without disrupting your existing operations. From full rewrites to incremental migrations, the complexity is handled so you get a system ready for the next decade.',
+    tags: ['Platform Rewrites', 'Identity Migration', 'Data Migration', 'Incremental Modernization'],
+  },
+];
+---
+
+<section id="services" class="relative">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-16 reveal">
+      <h2 class="text-3xl sm:text-4xl font-black font-[family-name:var(--font-display)]">
+        What I <span class="gradient-text">Do</span>
+      </h2>
+      <p class="text-text-secondary mt-4 max-w-2xl mx-auto">
+        Three areas where I consistently deliver results for my clients.
+      </p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6">
+      {services.map((service) => (
+        <div class="card-glow rounded-2xl p-7 sm:p-8 group flex flex-col">
+          <!-- Icon -->
+          <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-accent-blue/10 to-accent-teal/10 border border-accent-blue/20 flex items-center justify-center mb-6 group-hover:from-accent-blue/20 group-hover:to-accent-teal/20 transition-all duration-300">
+            {service.icon === 'layers' && (
+              <svg class="w-5 h-5 text-accent-teal" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6.429 9.75L2.25 12l4.179 2.25m0-4.5l5.571 3 5.571-3m-11.142 0L2.25 7.5 12 2.25l9.75 5.25-4.179 2.25m0 0L21.75 12l-4.179 2.25m0 0L12 17.25 6.429 14.25m11.142 0l4.179 2.25L12 21.75l-9.75-5.25 4.179-2.25"/></svg>
+            )}
+            {service.icon === 'api' && (
+              <svg class="w-5 h-5 text-accent-teal" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"/></svg>
+            )}
+            {service.icon === 'refresh' && (
+              <svg class="w-5 h-5 text-accent-teal" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M16.023 9.348h4.992v-.001M2.985 19.644v-4.992m0 0h4.992m-4.993 0l3.181 3.183a8.25 8.25 0 0013.803-3.7M4.031 9.865a8.25 8.25 0 0113.803-3.7l3.181 3.182M21.015 4.356v4.992"/></svg>
+            )}
+          </div>
+
+          <!-- Content -->
+          <h3 class="text-lg font-bold mb-3">{service.title}</h3>
+          <p class="text-text-secondary text-sm leading-relaxed mb-6 flex-1">
+            {service.description}
+          </p>
+
+          <!-- Tech tags -->
+          <div class="flex flex-wrap gap-2">
+            {service.tags.map((tag) => (
+              <span class="text-xs px-2.5 py-1 rounded-full bg-bg border border-border text-text-muted">
+                {tag}
+              </span>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

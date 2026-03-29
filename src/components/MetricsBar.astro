@@ -1,0 +1,29 @@
+---
+const metrics = [
+  { value: '5+', label: 'Years of Experience' },
+  { value: '4', label: 'Products Shipped' },
+  { value: '6-8', label: 'Developers Led' },
+];
+---
+
+<section class="relative mt-4 sm:-mt-8 z-10 !py-0">
+  <div class="max-w-4xl mx-auto px-6">
+    <div class="card-glow rounded-2xl p-8 sm:p-10">
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-8 sm:gap-4">
+        {metrics.map((metric, i) => (
+          <div class:list={[
+            'text-center',
+            i < metrics.length - 1 ? 'sm:border-r sm:border-border' : '',
+          ]}>
+            <div class="text-4xl sm:text-5xl font-black gradient-text font-[family-name:var(--font-display)]">
+              {metric.value}
+            </div>
+            <div class="text-text-secondary text-sm mt-2 font-medium uppercase tracking-wider">
+              {metric.label}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

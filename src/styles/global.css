@@ -1,0 +1,143 @@
+@import "tailwindcss";
+
+@theme {
+  /* Color Palette */
+  --color-bg: #0a0a0f;
+  --color-bg-light: #0e0e15;
+  --color-surface: #12121a;
+  --color-surface-light: #1a1a25;
+  --color-border: #1e1e2a;
+  --color-border-accent: #2a2a3a;
+
+  --color-text-primary: #ffffff;
+  --color-text-secondary: #9ca3af;
+  --color-text-muted: #6b7280;
+
+  --color-accent-blue: #3b82f6;
+  --color-accent-teal: #06b6d4;
+  --color-accent-mid: #2196e0;
+
+  /* Font */
+  --font-sans: 'Satoshi', 'Inter', ui-sans-serif, system-ui, sans-serif;
+  --font-display: 'Cabinet Grotesk', 'Satoshi', ui-sans-serif, system-ui, sans-serif;
+}
+
+/* Smooth scroll */
+html {
+  scroll-behavior: smooth;
+  background-color: var(--color-bg);
+  color: var(--color-text-primary);
+}
+
+body {
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* Gradient text utility */
+.gradient-text {
+  background: linear-gradient(135deg, var(--color-accent-blue), var(--color-accent-teal));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Gradient border card */
+.card-glow {
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+  position: relative;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+.card-glow:hover {
+  border-color: color-mix(in srgb, var(--color-accent-blue) 30%, transparent);
+  box-shadow: 0 0 30px -10px color-mix(in srgb, var(--color-accent-blue) 15%, transparent);
+}
+
+/* Accent gradient button */
+.btn-accent {
+  background: linear-gradient(135deg, var(--color-accent-blue), var(--color-accent-teal));
+  color: white;
+  font-weight: 600;
+  padding: 0.75rem 1.75rem;
+  border-radius: 9999px;
+  transition: opacity 0.2s ease, transform 0.2s ease, box-shadow 0.2s ease;
+  display: inline-block;
+  text-decoration: none;
+}
+
+.btn-accent:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 30px -8px color-mix(in srgb, var(--color-accent-blue) 40%, transparent);
+}
+
+/* Pill tag */
+.pill {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text-secondary);
+  transition: border-color 0.2s ease;
+}
+
+/* Section spacing */
+section {
+  padding: 6rem 0;
+  scroll-margin-top: 5rem;
+}
+
+@media (max-width: 768px) {
+  section {
+    padding: 4rem 0;
+  }
+}
+
+/* Noise texture overlay for depth */
+.noise-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  opacity: 0.03;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Scroll-triggered reveal animations */
+.reveal {
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+}
+
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--color-bg);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-border-accent);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}

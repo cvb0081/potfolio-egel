@@ -1,0 +1,81 @@
+---
+const steps = [
+  {
+    number: '01',
+    title: 'Discovery',
+    description: 'Every project starts with understanding your problem. I learn your business context, gather requirements, and define a clear scope before any code is written.',
+    icon: 'search',
+  },
+  {
+    number: '02',
+    title: 'Development',
+    description: 'Building iteratively with regular check-ins and working demos at each milestone. You see progress continuously, not just at the end. Sprints, milestones, or continuous delivery.',
+    icon: 'code',
+  },
+  {
+    number: '03',
+    title: 'Architecture',
+    description: 'The technical foundation is designed upfront. System structure, data models, technology choices, and integration points. Built to scale, not just to ship.',
+    icon: 'blueprint',
+  },
+  {
+    number: '04',
+    title: 'Delivery',
+    description: 'I don\'t just hand over code. Every delivery includes tested, documented, deployable software with clear handoff, whether that\'s to your team, your operations, or your users.',
+    icon: 'rocket',
+  },
+];
+---
+
+<section id="process" class="relative">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-16 reveal">
+      <h2 class="text-3xl sm:text-4xl font-black font-[family-name:var(--font-display)]">
+        How I <span class="gradient-text">Work</span>
+      </h2>
+      <p class="text-text-secondary mt-4 max-w-2xl mx-auto">
+        A structured process that keeps things transparent and on track.
+      </p>
+    </div>
+
+    <!-- Steps -->
+    <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+      <!-- Connecting line (desktop) -->
+      <div class="hidden lg:block absolute top-12 left-[12%] right-[12%] h-px bg-gradient-to-r from-accent-blue/30 via-accent-teal/20 to-accent-blue/30"></div>
+
+      {steps.map((step) => (
+        <div class="relative card-glow rounded-2xl p-7 text-center group">
+          <!-- Number badge -->
+          <div class="relative z-10 w-14 h-14 mx-auto mb-6 rounded-xl bg-gradient-to-br from-accent-blue/10 to-accent-teal/10 border border-accent-blue/20 flex items-center justify-center group-hover:from-accent-blue/20 group-hover:to-accent-teal/20 transition-all duration-300">
+            {step.icon === 'search' && (
+              <svg class="w-5 h-5 text-accent-teal" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M21 21l-5.197-5.197m0 0A7.5 7.5 0 105.196 5.196a7.5 7.5 0 0010.607 10.607z"/></svg>
+            )}
+            {step.icon === 'blueprint' && (
+              <svg class="w-5 h-5 text-accent-teal" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M3.75 6A2.25 2.25 0 016 3.75h2.25A2.25 2.25 0 0110.5 6v2.25a2.25 2.25 0 01-2.25 2.25H6a2.25 2.25 0 01-2.25-2.25V6zM3.75 15.75A2.25 2.25 0 016 13.5h2.25a2.25 2.25 0 012.25 2.25V18a2.25 2.25 0 01-2.25 2.25H6A2.25 2.25 0 013.75 18v-2.25zM13.5 6a2.25 2.25 0 012.25-2.25H18A2.25 2.25 0 0120.25 6v2.25A2.25 2.25 0 0118 10.5h-2.25a2.25 2.25 0 01-2.25-2.25V6zM13.5 15.75a2.25 2.25 0 012.25-2.25H18a2.25 2.25 0 012.25 2.25V18A2.25 2.25 0 0118 20.25h-2.25A2.25 2.25 0 0113.5 18v-2.25z"/></svg>
+            )}
+            {step.icon === 'code' && (
+              <svg class="w-5 h-5 text-accent-teal" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M17.25 6.75L22.5 12l-5.25 5.25m-10.5 0L1.5 12l5.25-5.25m7.5-3l-4.5 16.5"/></svg>
+            )}
+            {step.icon === 'rocket' && (
+              <svg class="w-5 h-5 text-accent-teal" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M15.59 14.37a6 6 0 01-5.84 7.38v-4.8m5.84-2.58a14.98 14.98 0 006.16-12.12A14.98 14.98 0 009.631 8.41m5.96 5.96a14.926 14.926 0 01-5.841 2.58m-.119-8.54a6 6 0 00-7.381 5.84h4.8m2.581-5.84a14.927 14.927 0 00-2.58 5.84m2.699 2.7c-.103.021-.207.041-.311.06a15.09 15.09 0 01-2.448-2.448 14.9 14.9 0 01.06-.312m-2.24 2.39a4.493 4.493 0 00-1.757 4.306 4.493 4.493 0 004.306-1.758M16.5 9a1.5 1.5 0 11-3 0 1.5 1.5 0 013 0z"/></svg>
+            )}
+          </div>
+
+          <div class="text-xs font-bold text-accent-blue mb-2 tracking-widest">{step.number}</div>
+          <h3 class="text-lg font-bold mb-3">{step.title}</h3>
+          <p class="text-text-secondary text-sm leading-relaxed">{step.description}</p>
+        </div>
+      ))}
+    </div>
+
+    <!-- Communication note -->
+    <div class="mt-12 text-center space-y-2">
+      <p class="text-text-secondary text-sm">
+        <span class="text-text-primary font-medium">Communication:</span> I work with Slack, Teams, video calls, and email. Whatever suits your team.
+      </p>
+      <p class="text-text-secondary text-sm">
+        <span class="text-text-primary font-medium">Timezone:</span> Flexible availability. I adjust to your schedule.
+      </p>
+    </div>
+  </div>
+</section>

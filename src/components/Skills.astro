@@ -1,0 +1,115 @@
+---
+interface SkillCategory {
+  name: string;
+  skills: string[];
+}
+
+interface SkillTier {
+  tier: number;
+  label: string;
+  description: string;
+  categories: SkillCategory[];
+}
+
+const tiers: SkillTier[] = [
+  {
+    tier: 1,
+    label: 'Core',
+    description: 'Proven across multiple production projects',
+    categories: [
+      { name: 'Languages & Frameworks', skills: ['C#', 'ASP.NET Core', 'Entity Framework Core', 'LINQ'] },
+      { name: 'Architecture & Patterns', skills: ['Clean Architecture', 'CQRS / MediatR', 'Domain-Driven Design', 'Event-Driven Architecture', 'Microservices', 'SOLID Principles', 'Design Patterns'] },
+      { name: 'Databases', skills: ['PostgreSQL', 'SQL Server', 'TimescaleDB', 'Redis'] },
+      { name: 'APIs & Communication', skills: ['RESTful APIs', 'Swagger / OpenAPI', 'RabbitMQ', 'SignalR'] },
+      { name: 'Auth & Security', skills: ['JWT', 'OAuth2 / OpenID Connect', 'Keycloak'] },
+      { name: 'Observability', skills: ['Serilog', 'OpenTelemetry', 'Prometheus', 'Grafana', 'Loki'] },
+      { name: 'DevOps & Infrastructure', skills: ['Docker', 'Docker Compose', 'Portainer', 'Azure Pipelines', 'GitHub Actions', 'Git', 'Azure', 'AWS'] },
+      { name: 'Resilience & Background', skills: ['Polly', 'Hangfire'] },
+    ],
+  },
+  {
+    tier: 2,
+    label: 'Working Knowledge',
+    description: 'Actively used in projects',
+    categories: [
+      { name: 'Frontend', skills: ['Angular', 'TypeScript', 'JavaScript'] },
+    ],
+  },
+  {
+    tier: 3,
+    label: 'Expanding',
+    description: 'Actively learning and exploring',
+    categories: [
+      { name: 'New Frontiers', skills: ['Node.js / NestJS', 'Java / Spring Boot', 'Python / FastAPI', 'GraphQL', 'MongoDB', 'React Native', 'Flutter', 'AI / LLM Integration'] },
+    ],
+  },
+];
+---
+
+<section id="skills" class="relative">
+  <div class="max-w-6xl mx-auto px-6">
+    <div class="text-center mb-16 reveal">
+      <h2 class="text-3xl sm:text-4xl font-black font-[family-name:var(--font-display)]">
+        <span class="gradient-text">Skills</span> & Technologies
+      </h2>
+      <p class="text-text-secondary mt-4 max-w-2xl mx-auto">
+        Organized by depth of experience. Hover over the legend for details.
+      </p>
+
+      <!-- Legend -->
+      <div class="flex flex-wrap justify-center gap-6 mt-8">
+        <div class="flex items-center gap-2">
+          <span class="w-3 h-3 rounded-full bg-accent-blue border border-accent-blue"></span>
+          <span class="text-xs text-text-secondary">Core</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="w-3 h-3 rounded-full border border-text-muted bg-text-muted/20"></span>
+          <span class="text-xs text-text-secondary">Working Knowledge</span>
+        </div>
+        <div class="flex items-center gap-2">
+          <span class="w-3 h-3 rounded-full border border-dashed border-accent-teal/50"></span>
+          <span class="text-xs text-text-secondary">Expanding</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="space-y-12">
+      {tiers.map((tier) => (
+        <div>
+          <div class="flex items-center gap-3 mb-6">
+            <h3 class:list={[
+              'text-sm font-bold uppercase tracking-widest',
+              tier.tier === 1 ? 'text-accent-blue' : '',
+              tier.tier === 2 ? 'text-text-muted' : '',
+              tier.tier === 3 ? 'text-accent-teal/60' : '',
+            ]}>
+              {tier.label}
+            </h3>
+            <span class="text-xs text-text-muted">{tier.description}</span>
+            <div class="flex-1 h-px bg-border"></div>
+          </div>
+
+          <div class="space-y-6">
+            {tier.categories.map((cat) => (
+              <div>
+                <div class="text-xs text-text-muted mb-3 font-medium uppercase tracking-wider">{cat.name}</div>
+                <div class="flex flex-wrap gap-2">
+                  {cat.skills.map((skill) => (
+                    <span class:list={[
+                      'text-sm px-3 py-1.5 rounded-full transition-colors duration-200',
+                      tier.tier === 1 ? 'bg-accent-blue/8 border border-accent-blue/25 text-text-primary hover:border-accent-blue/50' : '',
+                      tier.tier === 2 ? 'bg-surface border border-border text-text-secondary opacity-75 hover:opacity-100' : '',
+                      tier.tier === 3 ? 'bg-transparent border border-dashed border-accent-teal/25 text-text-muted hover:border-accent-teal/50 hover:text-text-secondary' : '',
+                    ]}>
+                      {skill}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
