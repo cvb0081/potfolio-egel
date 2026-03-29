@@ -1,9 +1,4 @@
 {
-	"compatibility_date": "2026-03-17",
-	"compatibility_flags": ["global_fetch_strictly_public"],
 	"name": "egel-portfolio",
-	"pages_build_output_dir": "./dist",
-	"observability": {
-		"enabled": true
-	}
+	"pages_build_output_dir": "./dist"
 }
