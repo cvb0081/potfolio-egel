@@ -3,7 +3,6 @@
 	"compatibility_flags": ["global_fetch_strictly_public"],
 	"name": "egel-portfolio",
 	"pages_build_output_dir": "./dist",
-	"main": "@astrojs/cloudflare/entrypoints/server",
 	"observability": {
 		"enabled": true
 	}
