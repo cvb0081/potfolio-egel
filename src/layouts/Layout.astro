@@ -52,6 +52,41 @@ const {
       rel="stylesheet"
     />
 
+    <!-- Structured Data -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "ProfilePage",
+      "mainEntity": {
+        "@type": "Person",
+        "name": "Egel Xhaferaj",
+        "jobTitle": "Freelance Software Engineer",
+        "url": "https://egelxh.dev",
+        "image": "https://egelxh.dev/headshot.jpg",
+        "email": "xhaferajegel@gmail.com",
+        "description": "Freelance software engineer with 5+ years building scalable backend systems and SaaS products.",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Tirana",
+          "addressCountry": "AL"
+        },
+        "alumniOf": {
+          "@type": "EducationalOrganization",
+          "name": "BSc in Software Engineering"
+        },
+        "knowsAbout": [
+          "C#", "ASP.NET Core", "Clean Architecture", "PostgreSQL",
+          "Domain-Driven Design", "CQRS", "Docker", "SaaS Development",
+          "REST APIs", "Microservices"
+        ],
+        "knowsLanguage": ["Albanian", "English", "Italian"],
+        "sameAs": [
+          "https://linkedin.com/in/egel",
+          "https://github.com/cvb0081",
+          "https://www.upwork.com/freelancers/~012899d2f987341308"
+        ]
+      }
+    })} />
+
     <title>{title}</title>
   </head>
   <body class="bg-bg text-text-primary">
