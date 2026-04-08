@@ -7,8 +7,8 @@ interface Props {
 }
 
 const {
-  title = "Egel Xhaferaj — Software Engineer",
-  description = "Software engineer with 5+ years of experience building backend systems and SaaS products. Specializing in C#, ASP.NET Core, and scalable architecture."
+  title = "Egel Xhaferaj — Freelance Backend Developer | C# & ASP.NET Core",
+  description = "Freelance software engineer with 5+ years building scalable backend systems and SaaS products. Specializing in C#, ASP.NET Core, and clean architecture. Available for hire."
 } = Astro.props;
 ---
 
@@ -20,21 +20,32 @@ const {
     <meta name="description" content={description} />
     <meta name="author" content="Egel Xhaferaj" />
 
+    <!-- Canonical -->
+    <link rel="canonical" href="https://egelxh.dev" />
+
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:image" content="/headshot.jpg" />
+    <meta property="og:url" content="https://egelxh.dev" />
+    <meta property="og:image" content="https://egelxh.dev/og-image.png" />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content="https://egelxh.dev/og-image.png" />
+
+    <!-- Theme & Geo -->
+    <meta name="theme-color" content="#0a0a0f" />
+    <meta name="geo.region" content="US" />
 
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
     <!-- Fonts -->
+    <!-- Font preload -->
+    <link rel="preload" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700,900&f[]=cabinet-grotesk@700,800,900&display=swap" as="style" />
     <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
     <link
       href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700,900&f[]=cabinet-grotesk@700,800,900&display=swap"
