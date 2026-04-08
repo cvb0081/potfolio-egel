@@ -10,6 +10,8 @@ const {
   title = "Egel Xhaferaj — Freelance Backend Developer | C# & ASP.NET Core",
   description = "Freelance software engineer with 5+ years building scalable backend systems and SaaS products. Specializing in C#, ASP.NET Core, and clean architecture. Available for hire."
 } = Astro.props;
+
+const siteUrl = Astro.site?.href.replace(/\/$/, '') ?? 'https://egelxh.dev';
 ---
 
 <!doctype html>
@@ -21,20 +23,20 @@ const {
     <meta name="author" content="Egel Xhaferaj" />
 
     <!-- Canonical -->
-    <link rel="canonical" href="https://egelxh.dev" />
+    <link rel="canonical" href={siteUrl} />
 
     <!-- Open Graph -->
     <meta property="og:title" content={title} />
     <meta property="og:description" content={description} />
     <meta property="og:type" content="website" />
-    <meta property="og:url" content="https://egelxh.dev" />
-    <meta property="og:image" content="https://egelxh.dev/og-image.png" />
+    <meta property="og:url" content={siteUrl} />
+    <meta property="og:image" content={`${siteUrl}/og-image.png`} />
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:title" content={title} />
     <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content="https://egelxh.dev/og-image.png" />
+    <meta name="twitter:image" content={`${siteUrl}/og-image.png`} />
 
     <!-- Theme & Geo -->
     <meta name="theme-color" content="#0a0a0f" />
@@ -44,8 +46,6 @@ const {
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
     <!-- Fonts -->
-    <!-- Font preload -->
-    <link rel="preload" href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700,900&f[]=cabinet-grotesk@700,800,900&display=swap" as="style" />
     <link rel="preconnect" href="https://api.fontshare.com" crossorigin />
     <link
       href="https://api.fontshare.com/v2/css?f[]=satoshi@400,500,600,700,900&f[]=cabinet-grotesk@700,800,900&display=swap"
@@ -60,8 +60,8 @@ const {
         "@type": "Person",
         "name": "Egel Xhaferaj",
         "jobTitle": "Freelance Software Engineer",
-        "url": "https://egelxh.dev",
-        "image": "https://egelxh.dev/headshot.jpg",
+        "url": siteUrl,
+        "image": `${siteUrl}/headshot.jpg`,
         "email": "xhaferajegel@gmail.com",
         "description": "Freelance software engineer with 5+ years building scalable backend systems and SaaS products.",
         "address": {
