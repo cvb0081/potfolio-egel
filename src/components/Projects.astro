@@ -7,6 +7,24 @@ const projects = [
     summary: 'Built a B2B SaaS fleet management platform for car rental companies. Responsible for the entire technical vision, architecture, and backend development. Clean Architecture and multi-tenant design from day one, currently onboarding pilot clients.',
     tech: ['C#', 'ASP.NET Core', 'Clean Architecture', 'CQRS/MediatR', 'PostgreSQL', 'Angular', 'React Native', 'Docker'],
     metric: { value: 'Own', label: 'Product, co-founded' },
+    highlights: [
+      'Sole owner of the technical vision and architecture',
+      'Multi-tenant and Clean Architecture from day one',
+      'Currently onboarding pilot clients',
+    ],
+  },
+  {
+    name: 'Healthcare Clinic Management Platform',
+    role: 'Team Leader & Lead Architect',
+    summary: "Took ownership of a multi-tenant SaaS platform for healthcare clinic management that had stalled after 4-5 months without reaching a demoable state. Translated the CEO's broad vision into concrete, prioritized features and re-scoped the roadmap around the pilot client. Introduced a disciplined process — PR-gated reviews, ticket-tracked branches, continuous deployment — and reached a demo-ready build deployed to staging within 8 weeks. The result is a modular monolith serving platform admins, clinic staff, and patients through three independent APIs and three Angular frontends.",
+    tech: ['C#', 'ASP.NET Core', '.NET 10', 'Clean Architecture', 'CQRS', 'PostgreSQL', 'Docker', 'FluentValidation', 'Angular', 'Azure Pipelines'],
+    metric: { value: 'Demo-Ready', label: 'In 8 weeks from takeover' },
+    highlights: [
+      'Process transformation: 267 raw commits in week one to 187 PR-gated, ticket-linked reviews',
+      'Modular monolith — 4 bounded contexts with schema-per-module multi-tenancy enforced by Postgres roles',
+      'Online booking with architecturally enforced double-booking protection',
+      '~700 automated tests including Testcontainers integration and Playwright E2E',
+    ],
   },
   {
     name: 'Hospitality Management Platform',
@@ -14,6 +32,24 @@ const projects = [
     summary: 'Led the full backend rewrite of a legacy property management system, now serving 50+ hotel clients with database-per-tenant isolation. Built an intelligent room allocation engine that resolves conflicts between online booking channels and physical room assignments. Includes real-time notifications, invoicing, and payment fiscalization for regulatory compliance.',
     tech: ['C#', 'ASP.NET Core', 'PostgreSQL', 'Entity Framework Core', 'Redis', 'SignalR', 'Docker', 'Azure Pipelines'],
     metric: { value: '50+', label: 'Hotel clients served' },
+    highlights: [
+      'Intelligent allocation engine resolves online-channel vs physical-room conflicts',
+      'Database-per-tenant isolation across 50+ hotel clients',
+      'Payment fiscalization for regulatory compliance',
+    ],
+  },
+  {
+    name: 'Tenant Management Platform',
+    role: 'Team Leader',
+    summary: "Led a team of 5 to deliver a complete MVP for a residential property management platform in roughly three to four weeks. The client — an existing partner already using our hospitality system — needed to prove concept feasibility to secure investment for a large accommodation complex (4 buildings, ~1,000 rooms). Built the backend API, coordinated cross-platform delivery (iOS, Android, Angular admin panel), and integrated directly with the client's existing property management system for real-time room availability, eliminating manual data entry and preventing overbooking across channels. The team ran a strict PR-per-feature, ticket-tracked workflow from day one, with automated deployment to a demo environment for investor presentations.",
+    tech: ['C#', 'ASP.NET Core', '.NET 10', 'Clean Architecture', 'PostgreSQL', 'Docker', 'OpenTelemetry', 'Grafana', 'NSwag'],
+    metric: { value: '~3-4 Weeks', label: 'From zero to working MVP' },
+    highlights: [
+      'Repeat-client trust — an existing partner came back for a new product',
+      'Full production observability from day one (traces, metrics, logs, Grafana dashboards)',
+      'Contract-first API: typed Angular client auto-generated from OpenAPI via NSwag',
+      'Companion native iOS app (SwiftUI) with encrypted storage and push notifications',
+    ],
   },
   {
     name: 'Custom Monitoring & Alerting Platform',
@@ -21,6 +57,11 @@ const projects = [
     summary: 'Co-architected and led development of real-time Monitoring and Alerting modules for a national-scale platform serving citizens across multiple public services. Fully custom-built from scratch, handling high-volume telemetry with time-series storage, live dashboards, and a configurable alerting engine.',
     tech: ['C#', 'ASP.NET Core', 'PostgreSQL', 'TimescaleDB', 'Redis', 'SignalR', 'OpenTelemetry', 'Keycloak', 'Angular', 'Docker'],
     metric: { value: 'National', label: 'Scale, custom-built' },
+    highlights: [
+      'High-volume telemetry with time-series storage',
+      'Configurable alerting engine and live dashboards',
+      'Built from scratch for national-scale public services',
+    ],
   },
   {
     name: 'Enterprise Single Sign-On Platform',
@@ -28,6 +69,11 @@ const projects = [
     summary: 'Designed and delivered an SSO platform federating identity across four products. Migrated ~35,000 user identities from legacy systems with non-default password hashing. Custom hash extensions verify credentials on first login and transparently rehash, achieving zero-disruption migration.',
     tech: ['C#', 'ASP.NET Core', 'Keycloak', 'OAuth2/OpenID Connect', 'PostgreSQL', 'SQL Server', 'Angular'],
     metric: { value: '35K', label: 'Identities migrated' },
+    highlights: [
+      'Federated identity across four separate products',
+      'Zero-disruption migration of ~35,000 user identities',
+      'Custom hash extensions rehash legacy credentials on first login',
+    ],
   },
 ];
 ---
@@ -42,7 +88,7 @@ const projects = [
         <span class="gradient-text">Projects</span>
       </h2>
       <p class="text-text-secondary mt-4 max-w-2xl mx-auto">
-        Real systems I've built and led. Business results paired with technical depth.
+        Real systems I've built, led, and shipped. Business results paired with technical depth.
       </p>
     </div>
 
@@ -71,15 +117,25 @@ const projects = [
                     <span class="text-sm text-accent-teal font-medium">{project.role}</span>
                   </div>
                   <div class="text-right shrink-0">
-                    <div class="text-2xl font-black gradient-text font-[family-name:var(--font-display)]">{project.metric.value}</div>
+                    <div class="text-2xl font-black gradient-text font-[family-name:var(--font-display)] whitespace-nowrap">{project.metric.value}</div>
                     <div class="text-xs text-text-muted uppercase tracking-wider">{project.metric.label}</div>
                   </div>
                 </div>
 
                 <!-- Summary -->
-                <p class="text-text-secondary text-sm leading-relaxed mb-6">
+                <p class="text-text-secondary text-sm leading-relaxed mb-5">
                   {project.summary}
                 </p>
+
+                <!-- Highlights -->
+                <ul class="space-y-2 mb-6">
+                  {project.highlights.map((h) => (
+                    <li class="flex gap-2.5 text-sm text-text-secondary leading-relaxed">
+                      <span class="mt-1.5 w-1.5 h-1.5 rounded-full bg-accent-teal shrink-0"></span>
+                      <span>{h}</span>
+                    </li>
+                  ))}
+                </ul>
 
                 <!-- Tech stack -->
                 <div class="flex flex-wrap gap-2">
